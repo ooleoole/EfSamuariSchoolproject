@@ -12,6 +12,10 @@
   </ItemGroup>
  
   <ItemGroup>
+    <Folder Include="bin\" />
+  </ItemGroup>
+ 
+  <ItemGroup>
     <ProjectReference Include="..\EfSamuariDomain\EfSamuariDomain.csproj" />
   </ItemGroup>
 

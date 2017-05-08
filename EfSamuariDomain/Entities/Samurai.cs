@@ -13,9 +13,11 @@ namespace EfSamuariDomain
         public virtual HairCut HairCut { get; set; }
         public virtual SecretIdentity SecretIdentity { get; set; }
         public virtual ICollection<Quote> Quotes { get; set; }
-        
+        public virtual ICollection<SamuariBattle> Battles { get; set; }
+        public virtual ICollection<BattleEvent> BattleEvents { get; set; }
+
     }
-    
+
     public enum HairCut
     {
         Mullet,
