@@ -9,9 +9,10 @@ using EfSamuariDomain;
 namespace EfSamuariData.Migrations
 {
     [DbContext(typeof(SamuraiContext))]
-    partial class SamuraiContextModelSnapshot : ModelSnapshot
+    [Migration("20170508092843_number6")]
+    partial class number6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -48,25 +49,9 @@ namespace EfSamuariData.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("SecretIdentityId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("SecretIdentityId");
 
                     b.ToTable("Samurais");
-                });
-
-            modelBuilder.Entity("EfSamuariDomain.SecretIdentity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("RealName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SecretIdentity");
                 });
 
             modelBuilder.Entity("EfSamuariDomain.Quote", b =>
@@ -74,13 +59,6 @@ namespace EfSamuariData.Migrations
                     b.HasOne("EfSamuariDomain.Samurai", "Samurai")
                         .WithMany("Quotes")
                         .HasForeignKey("SamuraiId");
-                });
-
-            modelBuilder.Entity("EfSamuariDomain.Samurai", b =>
-                {
-                    b.HasOne("EfSamuariDomain.SecretIdentity", "SecretIdentity")
-                        .WithMany()
-                        .HasForeignKey("SecretIdentityId");
                 });
         }
     }

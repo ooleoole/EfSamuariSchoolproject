@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using EfSamuariData;
-using EfSamuariDomain;
 
 namespace EfSamuariData.Migrations
 {
     [DbContext(typeof(SamuraiContext))]
-    partial class SamuraiContextModelSnapshot : ModelSnapshot
+    [Migration("20170508090112_number4")]
+    partial class number4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -25,8 +25,6 @@ namespace EfSamuariData.Migrations
                     b.Property<int?>("SamuraiId");
 
                     b.Property<string>("SamuraiQuote");
-
-                    b.Property<int>("Type");
 
                     b.HasKey("Id");
 
@@ -42,45 +40,20 @@ namespace EfSamuariData.Migrations
 
                     b.Property<string>("Clan");
 
-                    b.Property<int>("HairCut");
-
                     b.Property<bool>("HasSword");
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("SecretIdentityId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("SecretIdentityId");
 
                     b.ToTable("Samurais");
                 });
 
-            modelBuilder.Entity("EfSamuariDomain.SecretIdentity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("RealName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SecretIdentity");
-                });
-
             modelBuilder.Entity("EfSamuariDomain.Quote", b =>
                 {
-                    b.HasOne("EfSamuariDomain.Samurai", "Samurai")
+                    b.HasOne("EfSamuariDomain.Samurai")
                         .WithMany("Quotes")
                         .HasForeignKey("SamuraiId");
-                });
-
-            modelBuilder.Entity("EfSamuariDomain.Samurai", b =>
-                {
-                    b.HasOne("EfSamuariDomain.SecretIdentity", "SecretIdentity")
-                        .WithMany()
-                        .HasForeignKey("SecretIdentityId");
                 });
         }
     }
