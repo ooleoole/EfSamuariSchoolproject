@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using EfSamuariDomain;
 using EfSamuariDomain.Entities;
 
-namespace EfSamuariDomain
+namespace SamuraiWEB.ViewModels
 {
-    public class Samurai
+    public class SamuraiViewModel
     {
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string Clan { get; set; }
@@ -16,13 +17,5 @@ namespace EfSamuariDomain
         public virtual ICollection<Quote> Quotes { get; set; }
         public virtual ICollection<SamuariBattle> Battles { get; set; }
         public virtual ICollection<BattleEvent> BattleEvents { get; set; }
-
-    }
-
-    public enum HairCut
-    {
-        Mullet,
-        Gay,
-        Nice
     }
 }

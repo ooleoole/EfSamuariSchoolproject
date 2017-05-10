@@ -1,0 +1,33 @@
+﻿@model SamuraiViewModel
+
+@{
+    ViewBag.Title = "Create new samurai";
+}
+
+<h1>Add new samurai</h1>
+<form asp-antiforgery="true" method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="HasSword"></label>
+        <input asp-for="HasSword" type="checkbox" />
+        <span asp-validation-for="HasSword"></span>
+    </div>
+    <div>
+        <label asp-for="HairCut"></label>
+        <select asp-for="HairCut" asp-items="@Html.GetEnumSelectList(typeof(HairCut))"></select>
+        <span asp-validation-for="HairCut"></span>
+    </div>
+    <div>
+        <input type="submit" value="Add" />
+    </div>
+</form>
+
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Back</a>
+</div>

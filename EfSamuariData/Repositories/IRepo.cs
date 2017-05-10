@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace EfSamuariData.Repositories
 {
@@ -7,6 +9,7 @@ namespace EfSamuariData.Repositories
         void Add(TEntity entity);
         IEnumerable<TEntity> GetAll();
         TEntity Find(TEntity entity);
+        IEnumerable<TEntity>FindAll(Expression<Func<TEntity, bool>> predicate);
         void Delete(TEntity entity);
     }
 }

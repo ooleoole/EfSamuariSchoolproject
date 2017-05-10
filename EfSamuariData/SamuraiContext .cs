@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography.X509Certificates;
 using EfSamuariDomain;
+using EfSamuariDomain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EfSamuariData

@@ -1,0 +1,16 @@
+﻿
+@model SamuraiQuoteViewModel
+@{
+
+    ViewBag.Title = "SamuraiQuotes";
+}
+
+<h1>@Model.SamuraiName´s Quotes! </h1>
+@foreach (var quote in Model.Quotes)
+{
+    @Html.Partial("_QuoteSummary", quote)
+}
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Back</a>
+</div>
