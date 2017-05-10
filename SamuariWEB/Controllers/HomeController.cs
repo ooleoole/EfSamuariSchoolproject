@@ -1,6 +1,8 @@
-﻿using EfSamuariData.Repositories;
-using EfSamuariDomain;
+﻿using EfSamuariDomain.Entities;
+using EfSamuariDomain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using SamuraiWEB.Utilities;
+using SamuraiWEB.Utilities.Mappers;
 using SamuraiWEB.ViewModels;
 
 namespace SamuraiWEB.Controllers
@@ -16,14 +18,11 @@ namespace SamuraiWEB.Controllers
         public IActionResult Index()
         {
             var model = new StartPageViewModel();
-            model.MapSamuriasToViewModel(_repo.GetAll());
+            var samurais = _repo.GetAll();
+            model.Samurais = Mapper.ModelToViewModelMapping.SamuraisToSamuraiViewModels(samurais);
             return View(nameof(Index), model);
         }
 
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
+    
     }
 }

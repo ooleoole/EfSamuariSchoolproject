@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EfSamuariDomain
+namespace EfSamuariDomain.Entities
 {
     public class BattleEvent
     {

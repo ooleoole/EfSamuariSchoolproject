@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace EfSamuariDomain
+namespace EfSamuariDomain.Entities
 {
     public class Battle
     {
@@ -12,8 +11,10 @@ namespace EfSamuariDomain
         public virtual DateTime StarTime { get; set; }
         public virtual  DateTime EndTime { get; set; }
 
-        public virtual ICollection<SamuariBattle> Battles { get; set; }
-		public virtual BattleLog BattleLog { get; set; }
+        public virtual ICollection<SamuariBattle> Battles { get; set; } = new List<SamuariBattle>();
+        public virtual BattleLog BattleLog { get; set; }
+
+       
 
     }
 }

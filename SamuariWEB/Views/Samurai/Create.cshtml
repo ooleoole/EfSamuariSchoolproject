@@ -1,4 +1,5 @@
-﻿@model SamuraiViewModel
+﻿@using EfSamuariDomain.Entities
+@model SamuraiViewModelOLD
 
 @{
     ViewBag.Title = "Create new samurai";
@@ -16,6 +17,11 @@
         <label asp-for="HasSword"></label>
         <input asp-for="HasSword" type="checkbox" />
         <span asp-validation-for="HasSword"></span>
+    </div>
+    <div>
+        <label asp-for="SecretIdentity"></label>
+        <input asp-for="SecretIdentity"/>
+        <span asp-validation-for="SecretIdentity"></span>
     </div>
     <div>
         <label asp-for="HairCut"></label>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EfSamuariData.Repositories;
 using EfSamuariDomain;
 using EfSamuariDomain.Entities;
+using EfSamuariDomain.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

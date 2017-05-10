@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EfSamuariDomain;
-using EfSamuariDomain.Entities;
+﻿using EfSamuariDomain.Entities;
 
 namespace SamuraiWEB.ViewModels
 {
@@ -13,5 +8,7 @@ namespace SamuraiWEB.ViewModels
         public string SamuraiQuote { get; set; }
         public QuoteType Type { get; set; }
         public string SamuraiName { get; set; }
+
+        
     }
 }
