@@ -1,4 +1,5 @@
-﻿using EfSamuariDomain;
+﻿using System.Linq;
+using EfSamuariDomain;
 using EfSamuariDomain.Entities;
 using EfSamuariDomain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -26,26 +27,19 @@ namespace SamuraiWEB.Controllers
 
         [HttpPost]
         public IActionResult Create(SamuraiViewModel model)
-        { 
-            var teast = new Samurai()
-            {
-                Clan = "Bajs",
-                HasSword = true,
-                Name = "testetste",
-                SecretIdentity = new SecretIdentity()
-                {
-                    Id = 32,
-                    RealName = "Olapopp"
-                }
+        {
 
-            };
-            var test=  AutoMapper.Map<Samurai>(teast);  
-            if (ModelState.IsValid)
+
+            if (!ModelState.IsValid)
             {
-                
+                var samurai = Mapper.ViewModelToModelMapping.
+                    SamuraiViewModelToSamurai(model);
+                _repo.Add(samurai);
+                //samurai = _repo.FindAll(s=>s.Name==model.Name).FirstOrDefault();
+                return RedirectToAction("Index", "Home");
             }
 
-            return View();
+            return View("Create");
         }
     }
 }

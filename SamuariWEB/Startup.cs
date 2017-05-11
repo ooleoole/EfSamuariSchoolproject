@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EfSamuariData.Repositories;
-using EfSamuariDomain;
+﻿using EfSamuariData.Repositories;
 using EfSamuariDomain.Entities;
 using EfSamuariDomain.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -13,9 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SamuariWEB.Services;
+using SamuraiWEB.Middleware;
 using SamuraiWEB.Services;
 
-namespace SamuariWEB
+namespace SamuraiWEB
 {
     public class Startup
     {
@@ -53,9 +49,14 @@ namespace SamuariWEB
             {
                 app.UseExceptionHandler("/error");
             }
-            app.UseFileServer();
-
+            app.UseFileServer(new FileServerOptions
+            {
+                EnableDefaultFiles = true,
+                EnableDirectoryBrowsing = false,
+            });
+            app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseTypeScripts(env.ContentRootPath);
             app.UseMvc(routes => routes.MapRoute("default", "{controller=Home}/{Action=Index}/{id?}"));
             app.Run(async (context) => await context.Response.WriteAsync("Hello World!"));
         }

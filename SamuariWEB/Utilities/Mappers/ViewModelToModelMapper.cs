@@ -14,19 +14,39 @@ namespace SamuraiWEB.Utilities.Mappers
         {
             return new Samurai
             {
-                BattleEvents = samuraiViewModel.BattleEvents,
+                Name = samuraiViewModel.Name,
+                Clan = samuraiViewModel.Clan,
+                SecretIdentity = new SecretIdentity
+                {
+                    RealName = samuraiViewModel.SecretIdentity
+                },
+                HasSword = samuraiViewModel.HasSword,
+                HairCut = samuraiViewModel.HairCut
 
             };
         }
+        public IEnumerable<Samurai> CreateSamuraiViewModelsToSamurais(IEnumerable<SamuraiViewModel> samuraiViewModels)
+        {
+            return samuraiViewModels.Select(SamuraiViewModelToSamurai);
 
+        }
         public IEnumerable<Samurai> SamuraiViewModelsToSamurais(IEnumerable<SamuraiViewModel> samuraiViewModels)
         {
-            throw new NotImplementedException();
+            return samuraiViewModels.Select(SamuraiViewModelToSamurai);
+
         }
 
         public Quote QuoteViewModelToQuote(QuoteViewModel quoteViewModel)
         {
             throw new NotImplementedException();
+        }
+
+        public Quote CreateQuoteViewModelToQuote(CreateQuoteViewModel quoteViewModel)
+        {
+            return new Quote()
+            {
+                
+            };
         }
 
         public IEnumerable<Quote> QuoteViewQuotesToQuotes(IEnumerable<QuoteViewModel> quoteViewModels)

@@ -10,9 +10,8 @@
 
     public enum QuoteType
     {
-        Good,
-        Bad,
-        Normal,
+        VictoryQuote,
+        DefeatQuote
     }
 
     

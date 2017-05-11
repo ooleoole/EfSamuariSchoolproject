@@ -1,10 +1,10 @@
 ﻿@using EfSamuariDomain.Entities
-@model SamuraiViewModel
+@model CreateSamuriaViewModel
 
 @{
     ViewBag.Title = "Create new samurai";
 }
-
+<script type="text/javascript" src="CreateSamurai.js"></script>
 <h1>Add new samurai</h1>
 <form asp-antiforgery="true" method="post">
     <div asp-validation-summary="ModelOnly"></div>
@@ -20,7 +20,7 @@
     </div>
     <div>
         <label asp-for="SecretIdentity"></label>
-        <input asp-for="SecretIdentity"/>
+        <input asp-for="SecretIdentity" />
         <span asp-validation-for="SecretIdentity"></span>
     </div>
     <div>
@@ -28,6 +28,24 @@
         <select asp-for="HairCut" asp-items="@Html.GetEnumSelectList(typeof(HairCut))"></select>
         <span asp-validation-for="HairCut"></span>
     </div>
+    <div id="AddQuotes">
+        <Button id="AddQuotesBtn" type="button">Add Quotes</Button>
+        <div id="AddQuotesInput">
+            <div>
+                <label asp-for="VictoryQuote"></label>
+                <input asp-for="VictoryQuote"/>
+                <span asp-validation-for="VictoryQuote"></span>
+            </div>
+            <div>
+                <label asp-for="DefeatQuote"></label>
+                <textarea rows="4" cols="50" asp-for="DefeatQuote"></textArea>
+                <span asp-validation-for="DefeatQuote"></span>
+            </div>
+        </div>
+    </div>
+
+
+
     <div>
         <input type="submit" value="Add" />
     </div>

@@ -6,6 +6,7 @@ namespace SamuraiWEB.Utilities.Mappers
     {
         public static IModelToViewModelMapper ModelToViewModelMapping { get; }
         public static IViewModelToModelMapper ViewModelToModelMapping { get; }
+
         static Mapper()
         {
             ModelToViewModelMapping = new ModelToViewModelMapper();

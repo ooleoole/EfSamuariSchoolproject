@@ -11,32 +11,34 @@ namespace EfSamuariData.Repositories
 {
     public class Repo<TEntity> : IRepo<TEntity> where TEntity : class
     {
-        private readonly DbSet<TEntity> _context;
-
+        private readonly DbSet<TEntity> _set;
+        private readonly DbContext _context;
 
         public Repo()
         {
-            _context = new SamuraiContext().Set<TEntity>();
+            _context = new SamuraiContext();
+            _set = _context.Set<TEntity>();
         }
 
         public void Add(TEntity entity)
         {
-            _context.Add(entity);
+            _set.Add(entity);
+            _context.SaveChanges();
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            return _context.ToList();
+            return _set.ToList();
         }
 
         public TEntity Find(TEntity entity)
         {
-            return _context.Find(entity);
+            return _set.Find(entity);
         }
 
         public IEnumerable<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate)
         {
-            return _context.Where(predicate);
+            return _set.Where(predicate);
         }
 
         public IEnumerable<TEntity> FindAll(int id)
@@ -46,8 +48,9 @@ namespace EfSamuariData.Repositories
 
         public void Delete(TEntity entity)
         {
-            _context.Remove(entity);
+            _set.Remove(entity);
         }
+
 
     }
 

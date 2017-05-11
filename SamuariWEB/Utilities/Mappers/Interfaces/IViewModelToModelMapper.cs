@@ -11,8 +11,7 @@ namespace SamuraiWEB.Utilities.Mappers.Interfaces
     {
         Samurai SamuraiViewModelToSamurai(SamuraiViewModel samuraiViewModel);
         IEnumerable<Samurai> SamuraiViewModelsToSamurais(IEnumerable<SamuraiViewModel> samuraiViewModels);
-        Quote QuoteViewModelToQuote(QuoteViewModel quoteViewModel);
-        IEnumerable<Quote> QuoteViewQuotesToQuotes(IEnumerable<QuoteViewModel> quoteViewModels);
+        
 
     }
 }

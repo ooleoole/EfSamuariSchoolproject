@@ -6,7 +6,7 @@ using SamuraiWEB.ViewModels;
 
 namespace SamuraiWEB.Utilities.Mappers
 {
-    internal class ModelToViewModelMapper: IModelToViewModelMapper
+    internal class ModelToViewModelMapper : IModelToViewModelMapper
     {
         public QuoteViewModel QuoteToQuoteViewModel(Quote quote)
         {
@@ -34,14 +34,13 @@ namespace SamuraiWEB.Utilities.Mappers
         {
             return new SamuraiViewModel
             {
-                BattleEvents = samurai.BattleEvents,
-                Battles = samurai.Battles,
+
                 Clan = samurai.Clan,
                 HairCut = samurai.HairCut,
                 Id = samurai.Id,
                 Name = samurai.Name,
-                Quotes = samurai.Quotes,
-                SecretIdentity = samurai.SecretIdentity,
+                Quotes = QuotesToQuoteViewModels(samurai.Quotes).ToList(),
+                SecretIdentity = samurai.SecretIdentity==null?"":samurai.SecretIdentity.RealName,
                 HasSword = samurai.HasSword
 
             };
@@ -49,18 +48,8 @@ namespace SamuraiWEB.Utilities.Mappers
 
         public IEnumerable<SamuraiViewModel> SamuraisToSamuraiViewModels(IEnumerable<Samurai> samurais)
         {
-            return samurais.Select(samurai => new SamuraiViewModel
-            {
-                BattleEvents = samurai.BattleEvents,
-                Battles = samurai.Battles,
-                Clan = samurai.Clan,
-                HairCut = samurai.HairCut,
-                Id = samurai.Id,
-                Name = samurai.Name,
-                Quotes = samurai.Quotes,
-                SecretIdentity = samurai.SecretIdentity,
-                HasSword = samurai.HasSword
-            });
+            return samurais.Select(SamuraiToSamuraiViewModel);
+
         }
 
     }

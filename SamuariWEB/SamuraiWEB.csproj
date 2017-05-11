@@ -6,7 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\Scripts\CreateSamurai.js" />
+    <Content Include="wwwroot\Scripts\CreateSamurai.ts" />
     <Content Include="wwwroot\appsettings.json" />
+    <Content Include="wwwroot\CreateSamurai.js" />
+    <Content Include="wwwroot\CreateSamurai.ts" />
+    <Content Include="wwwroot\test.html" />
+    <Content Include="wwwroot\tsconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Scripts\CreateSamurai.js" />
+    <None Include="wwwroot\Scripts\CreateSamurai.ts" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BundlerMinifier.Core" Version="2.4.337" />
@@ -23,6 +34,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0" />
+    <PackageReference Include="Npm" Version="3.5.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EfSamuariData\EfSamuariData.csproj" />
