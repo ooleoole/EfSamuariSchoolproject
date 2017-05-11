@@ -8,12 +8,12 @@ namespace SamuraiWEB.ViewModels
     public class StartPageViewModel
     {
 
-        public IEnumerable<SamuraiViewModelOLD> Samurais { get; set; }
+        public IEnumerable<SamuraiViewModel> Samurais { get; set; }
 
 
         public StartPageViewModel()
         {
-            Samurais = new List<SamuraiViewModelOLD>();
+            Samurais = new List<SamuraiViewModel>();
         }
         
     }

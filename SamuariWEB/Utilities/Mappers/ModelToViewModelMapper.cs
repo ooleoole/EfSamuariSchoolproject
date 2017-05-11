@@ -30,9 +30,9 @@ namespace SamuraiWEB.Utilities.Mappers
             });
         }
 
-        public SamuraiViewModelOLD SamuraiToSamuraiViewModel(Samurai samurai)
+        public SamuraiViewModel SamuraiToSamuraiViewModel(Samurai samurai)
         {
-            return new SamuraiViewModelOLD
+            return new SamuraiViewModel
             {
                 BattleEvents = samurai.BattleEvents,
                 Battles = samurai.Battles,
@@ -47,9 +47,9 @@ namespace SamuraiWEB.Utilities.Mappers
             };
         }
 
-        public IEnumerable<SamuraiViewModelOLD> SamuraisToSamuraiViewModels(IEnumerable<Samurai> samurais)
+        public IEnumerable<SamuraiViewModel> SamuraisToSamuraiViewModels(IEnumerable<Samurai> samurais)
         {
-            return samurais.Select(samurai => new SamuraiViewModelOLD
+            return samurais.Select(samurai => new SamuraiViewModel
             {
                 BattleEvents = samurai.BattleEvents,
                 Battles = samurai.Battles,

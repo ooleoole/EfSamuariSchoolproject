@@ -8,6 +8,8 @@ namespace SamuraiWEB.Utilities.Mappers
 {
     public static class AutoMapper
     {
+
+
         public static TResult Map<TResult>(object target)
         {
             var targetClassName = target.GetType().Name;
@@ -15,46 +17,21 @@ namespace SamuraiWEB.Utilities.Mappers
 
             ValidateMappingSetup(targetClassName, resultClassName);
 
-            
-            var targetPropMap = GetPropertiesMap(target);
-            var instance = (TResult)Activator.CreateInstance(typeof(TResult));
-            var resultPropMap = GetPropertiesMap(instance);
-
-            return (TResult)Activator.CreateInstance(typeof(TResult));
+            var resultInstance = (TResult)Activator.CreateInstance(typeof(TResult));
+            var resultProps = resultInstance.GetType().GetProperties();
+            var targetProps = target.GetType().GetProperties();
+            foreach (var resultProp in resultProps)
+                foreach (var targetProp in targetProps)
+                    if (resultProp.Name == targetProp.Name && resultProp.PropertyType == targetProp.PropertyType)
+                        SetTargetsValueToResultInstance(target, targetProp, resultProp, resultInstance);
+            return resultInstance;
         }
 
-        private static List<List<PropertyInfo>> GetPropertiesMap(object obj)
+        private static void SetTargetsValueToResultInstance<TResult>(object target, PropertyInfo targetProp,
+            PropertyInfo resultProp, TResult resultInstance)
         {
-            bool looper;
-            var objProperties = GetTargetsProperties(obj);
-            var propMap = new List<List<PropertyInfo>>();
-            do
-            {
-                var simpleProperties = new List<PropertyInfo>();
-                var nextLevelOfProps = new List<PropertyInfo>();
-                foreach (var property in objProperties)
-                {
-                    var propType = property.PropertyType;
-                    if (propType.GetTypeInfo().IsClass && propType != typeof(string))
-                    {
-                        var test = property.PropertyType.GetProperties();
-                        nextLevelOfProps.AddRange(test);
-                    }
-                    else
-                    {
-                        simpleProperties.Add(property);
-                    }
-                }
-                objProperties = nextLevelOfProps;
-                looper = nextLevelOfProps.Count != 0;
-                propMap.Add(simpleProperties);
-            } while (looper);
-            return propMap;
-        }
-
-        private static List<PropertyInfo> GetTargetsProperties(object target)
-        {
-            return target.GetType().GetProperties().ToList();
+            var value = targetProp.GetValue(target);
+            resultProp.SetValue(resultInstance, value);
         }
 
         private static void ValidateMappingSetup(string targetClassName, string resultClassName)

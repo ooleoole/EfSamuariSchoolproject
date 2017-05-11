@@ -9,8 +9,8 @@ namespace SamuraiWEB.Utilities.Mappers.Interfaces
 {
     public interface IViewModelToModelMapper
     {
-        Samurai SamuraiViewModelToSamurai(SamuraiViewModelOLD samuraiViewModel);
-        IEnumerable<Samurai> SamuraiViewModelsToSamurais(IEnumerable<SamuraiViewModelOLD> samuraiViewModels);
+        Samurai SamuraiViewModelToSamurai(SamuraiViewModel samuraiViewModel);
+        IEnumerable<Samurai> SamuraiViewModelsToSamurais(IEnumerable<SamuraiViewModel> samuraiViewModels);
         Quote QuoteViewModelToQuote(QuoteViewModel quoteViewModel);
         IEnumerable<Quote> QuoteViewQuotesToQuotes(IEnumerable<QuoteViewModel> quoteViewModels);
 

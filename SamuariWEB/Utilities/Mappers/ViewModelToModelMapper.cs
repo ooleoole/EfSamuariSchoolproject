@@ -10,7 +10,7 @@ namespace SamuraiWEB.Utilities.Mappers
 {
     public class ViewModelToModelMapper : IViewModelToModelMapper
     {
-        public Samurai SamuraiViewModelToSamurai(SamuraiViewModelOLD samuraiViewModel)
+        public Samurai SamuraiViewModelToSamurai(SamuraiViewModel samuraiViewModel)
         {
             return new Samurai
             {
@@ -19,7 +19,7 @@ namespace SamuraiWEB.Utilities.Mappers
             };
         }
 
-        public IEnumerable<Samurai> SamuraiViewModelsToSamurais(IEnumerable<SamuraiViewModelOLD> samuraiViewModels)
+        public IEnumerable<Samurai> SamuraiViewModelsToSamurais(IEnumerable<SamuraiViewModel> samuraiViewModels)
         {
             throw new NotImplementedException();
         }
