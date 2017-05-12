@@ -32,12 +32,12 @@
         <Button id="AddQuotesBtn" type="button">Add Quotes</Button>
         <div id="AddQuotesInput">
             <div>
-                <label asp-for="VictoryQuote"></label>
-                <input asp-for="VictoryQuote"/>
+                <header asp-for="VictoryQuote"></header>
+                <textarea rows="4" cols="50" asp-for="DefeatQuote"></textarea>
                 <span asp-validation-for="VictoryQuote"></span>
             </div>
             <div>
-                <label asp-for="DefeatQuote"></label>
+                <header asp-for="DefeatQuote"></header>
                 <textarea rows="4" cols="50" asp-for="DefeatQuote"></textArea>
                 <span asp-validation-for="DefeatQuote"></span>
             </div>
