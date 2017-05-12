@@ -1,7 +1,6 @@
 ﻿using EfSamuariDomain.Entities;
 using EfSamuariDomain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using SamuraiWEB.Utilities;
 using SamuraiWEB.Utilities.Mappers;
 using SamuraiWEB.ViewModels;
 
