@@ -8,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SamuariWEB.Services;
-using SamuraiWEB.Middleware;
 using SamuraiWEB.Services;
 
 namespace SamuraiWEB
@@ -56,7 +55,6 @@ namespace SamuraiWEB
             });
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseTypeScripts(env.ContentRootPath);
             app.UseMvc(routes => routes.MapRoute("default", "{controller=Home}/{Action=Index}/{id?}"));
             app.Run(async (context) => await context.Response.WriteAsync("Hello World!"));
         }

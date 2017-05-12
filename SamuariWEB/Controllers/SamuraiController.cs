@@ -1,9 +1,6 @@
-﻿using System.Linq;
-using EfSamuariDomain;
-using EfSamuariDomain.Entities;
+﻿using EfSamuariDomain.Entities;
 using EfSamuariDomain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Remotion.Linq.Utilities;
 using SamuraiWEB.Utilities.Mappers;
 using SamuraiWEB.ViewModels;
 
@@ -26,14 +23,14 @@ namespace SamuraiWEB.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(SamuraiViewModel model)
+        public IActionResult Create(CreateSamuriaViewModel model)
         {
 
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var samurai = Mapper.ViewModelToModelMapping.
-                    SamuraiViewModelToSamurai(model);
+                    CreateSamuraiViewModelToSamurai(model);
                 _repo.Add(samurai);
                 //samurai = _repo.FindAll(s=>s.Name==model.Name).FirstOrDefault();
                 return RedirectToAction("Index", "Home");

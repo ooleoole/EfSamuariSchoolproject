@@ -1,12 +1,11 @@
-﻿@using EfSamuariDomain.Entities
-@model CreateSamuriaViewModel
+﻿@model CreateSamuriaViewModel
 
 @{
     ViewBag.Title = "Create new samurai";
 }
 <script type="text/javascript" src="CreateSamurai.js"></script>
 <h1>Add new samurai</h1>
-<form asp-antiforgery="true" method="post">
+<form asp-antiforgery="true" method="post" asp-controller="Samurai" asp-action="Create">
     <div asp-validation-summary="ModelOnly"></div>
     <div>
         <label asp-for="Name"></label>
@@ -28,17 +27,22 @@
         <select asp-for="HairCut" asp-items="@Html.GetEnumSelectList(typeof(HairCut))"></select>
         <span asp-validation-for="HairCut"></span>
     </div>
+    <div>
+        <label asp-for="Clan"></label>
+        <input asp-for="Clan"/>
+        <span asp-validation-for="Clan"></span>
+    </div>
     <div id="AddQuotes">
         <Button id="AddQuotesBtn" type="button">Add Quotes</Button>
         <div id="AddQuotesInput">
             <div>
-                <label asp-for="VictoryQuote"></label>
-                <input asp-for="VictoryQuote"/>
+                <h4>@nameof(QuoteType.VictoryQuote)</h4>
+                <textarea rows="4" cols="50" asp-for="VictoryQuote"></textarea>
                 <span asp-validation-for="VictoryQuote"></span>
             </div>
             <div>
-                <label asp-for="DefeatQuote"></label>
-                <textarea rows="4" cols="50" asp-for="DefeatQuote"></textArea>
+                <h4>@nameof(QuoteType.DefeatQuote)</h4>
+                <textarea rows="4" cols="50" asp-for="DefeatQuote"></textarea>
                 <span asp-validation-for="DefeatQuote"></span>
             </div>
         </div>

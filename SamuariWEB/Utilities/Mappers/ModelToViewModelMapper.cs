@@ -13,7 +13,6 @@ namespace SamuraiWEB.Utilities.Mappers
             return new QuoteViewModel
             {
                 Id = quote.Id,
-                SamuraiName = quote.Samurai.Name,
                 SamuraiQuote = quote.SamuraiQuote,
                 Type = quote.Type
             };
@@ -21,13 +20,8 @@ namespace SamuraiWEB.Utilities.Mappers
 
         public IEnumerable<QuoteViewModel> QuotesToQuoteViewModels(IEnumerable<Quote> quotes)
         {
-            return quotes.Select(quote => new QuoteViewModel
-            {
-                Id = quote.Id,
-                SamuraiName = quote.Samurai.Name,
-                SamuraiQuote = quote.SamuraiQuote,
-                Type = quote.Type
-            });
+            return quotes.Select(QuoteToQuoteViewModel);
+
         }
 
         public SamuraiViewModel SamuraiToSamuraiViewModel(Samurai samurai)
@@ -40,7 +34,7 @@ namespace SamuraiWEB.Utilities.Mappers
                 Id = samurai.Id,
                 Name = samurai.Name,
                 Quotes = QuotesToQuoteViewModels(samurai.Quotes).ToList(),
-                SecretIdentity = samurai.SecretIdentity==null?"":samurai.SecretIdentity.RealName,
+                SecretIdentity = samurai.SecretIdentity == null ? "" : samurai.SecretIdentity.RealName,
                 HasSword = samurai.HasSword
 
             };

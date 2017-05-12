@@ -11,7 +11,9 @@ namespace SamuraiWEB.Utilities.Mappers.Interfaces
     {
         Samurai SamuraiViewModelToSamurai(SamuraiViewModel samuraiViewModel);
         IEnumerable<Samurai> SamuraiViewModelsToSamurais(IEnumerable<SamuraiViewModel> samuraiViewModels);
-        
+        Samurai CreateSamuraiViewModelToSamurai(CreateSamuriaViewModel createSamuriaViewModel);
+
+
 
     }
 }

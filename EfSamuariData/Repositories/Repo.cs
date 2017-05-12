@@ -22,7 +22,9 @@ namespace EfSamuariData.Repositories
 
         public void Add(TEntity entity)
         {
+
             _set.Add(entity);
+            _context.Entry(entity).State = EntityState.Added;
             _context.SaveChanges();
         }
 
