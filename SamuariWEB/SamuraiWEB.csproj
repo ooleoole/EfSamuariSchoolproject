@@ -6,18 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\Scripts\CreateSamurai.js" />
-    <Content Include="wwwroot\Scripts\CreateSamurai.ts" />
     <Content Include="wwwroot\appsettings.json" />
     <Content Include="wwwroot\CreateSamurai.js" />
     <Content Include="wwwroot\CreateSamurai.ts" />
     <Content Include="wwwroot\test.html" />
     <Content Include="wwwroot\tsconfig.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\Scripts\CreateSamurai.js" />
-    <None Include="wwwroot\Scripts\CreateSamurai.ts" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BundlerMinifier.Core" Version="2.4.337" />
