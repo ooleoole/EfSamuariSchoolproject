@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using EfSamuariDomain;
 using EfSamuariDomain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 namespace EfSamuariData.Repositories
 {
@@ -18,11 +16,14 @@ namespace EfSamuariData.Repositories
         {
             _context = new SamuraiContext();
             _set = _context.Set<TEntity>();
+            
         }
 
         public void Add(TEntity entity)
         {
+
             _set.Add(entity);
+            _context.Entry(entity).State = EntityState.Added;
             _context.SaveChanges();
         }
 
@@ -52,6 +53,23 @@ namespace EfSamuariData.Repositories
         }
 
 
+        public IQueryable<TEntity> GetAllInclude(Expression<Func<TEntity, object>> includeProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public IEnumerable<TEntity> AllInclude(params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            return GetAllIncluding(includeProperties).ToList();
+        }
+        private IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            var queryable = _set as IQueryable<TEntity>;
+
+            return includeProperties.Aggregate
+            (queryable, (current, includeProperty) => current.Include(includeProperty));
+        }
     }
 
 

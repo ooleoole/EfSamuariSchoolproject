@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using EfSamuariDomain.Entities;
 using SamuraiWEB.Utilities.Mappers.Interfaces;
 using SamuraiWEB.ViewModels;
@@ -10,26 +9,42 @@ namespace SamuraiWEB.Utilities.Mappers
 {
     public class ViewModelToModelMapper : IViewModelToModelMapper
     {
-        public Samurai SamuraiViewModelToSamurai(SamuraiViewModel samuraiViewModel)
+        public Samurai CreateSamuraiViewModelToSamurai(CreateSamuriaViewModel createSamuriaViewModel)
         {
             return new Samurai
             {
-                Name = samuraiViewModel.Name,
-                Clan = samuraiViewModel.Clan,
+                Name = createSamuriaViewModel.Name,
+                Clan = createSamuriaViewModel.Clan,
                 SecretIdentity = new SecretIdentity
                 {
-                    RealName = samuraiViewModel.SecretIdentity
+                    RealName = createSamuriaViewModel.SecretIdentity
                 },
-                HasSword = samuraiViewModel.HasSword,
-                HairCut = samuraiViewModel.HairCut
+                HasSword = createSamuriaViewModel.HasSword,
+                HairCut = createSamuriaViewModel.HairCut,
+                Quotes = new List<Quote> { new Quote
+                {
+                    SamuraiQuote = createSamuriaViewModel.VictoryQuote,
+                    Type = QuoteType.VictoryQuote
+                },
+                new Quote
+                {
+                    SamuraiQuote = createSamuriaViewModel.DefeatQuote,
+                    Type = QuoteType.DefeatQuote
+                }}
 
             };
         }
-        public IEnumerable<Samurai> CreateSamuraiViewModelsToSamurais(IEnumerable<SamuraiViewModel> samuraiViewModels)
+        public IEnumerable<Samurai> CreateSamuraiViewModelsToSamurais(IEnumerable<CreateSamuriaViewModel> createSamuriaViewModels)
         {
-            return samuraiViewModels.Select(SamuraiViewModelToSamurai);
+            return createSamuriaViewModels.Select(CreateSamuraiViewModelToSamurai);
 
         }
+
+        public Samurai SamuraiViewModelToSamurai(SamuraiViewModel samuraiViewModel)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Samurai> SamuraiViewModelsToSamurais(IEnumerable<SamuraiViewModel> samuraiViewModels)
         {
             return samuraiViewModels.Select(SamuraiViewModelToSamurai);
