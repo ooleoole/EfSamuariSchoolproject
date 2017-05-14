@@ -41,11 +41,11 @@ namespace EfSamuariData
         .HasForeignKey(pc => pc.SamuraiId);
 
             modelBuilder.Entity<SamuariBattle>()
-        .HasOne(pc => pc.Battle)
-        .WithMany(p => p.Battles)
-        .HasForeignKey(pc => pc.BattleId);
+                .HasOne(pc => pc.Battle);
+        
+        
 
-            modelBuilder.Entity<BattleEvent>().HasAlternateKey(k => new { k.SamuraiId, k.EventTime });
+           
 
         }
     }

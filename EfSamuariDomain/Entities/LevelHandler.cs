@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.Resources;
 using System.Text;
+using Remotion.Linq.Utilities;
 
 namespace EfSamuariDomain.Entities
 {
-    public class Level
+    public class LevelHandler
     {
-        private readonly Random _random;
+
+        private readonly Random _random = new Random(Guid.NewGuid().GetHashCode());
         private int _maxStatsIncresmentPool = 200;
 
-        public int LevelNum { get; set; }
-        public int Xp { get; set; }
+        public int Id { get; set; }
+        public int Level { get; set; }
         public int NextLevelXpLimit { get; set; }
         public int MaxHp { get; set; }
         public int MaxIntelligens { get; set; }
@@ -21,26 +23,43 @@ namespace EfSamuariDomain.Entities
 
 
 
-        public Level()
+        public LevelHandler()
         {
-            LevelNum = 1;
-            NextLevelXpLimit = 200;
-            _random = new Random(Guid.NewGuid().GetHashCode());
+            Level = 1;
+            NextLevelXpLimit = 100;
+
             InitMaxStats();
         }
 
-        public void GainXp(int xpGained)
+        public bool CheckIfLevelUp(int xpGaind)
         {
-            Xp += xpGained;
+            return xpGaind > NextLevelXpLimit;
 
-            if (Xp > NextLevelXpLimit)
-            {
-                IncreaseNextLevelXpLimit();
-                LevelUp();
-            }
         }
 
-        private void LevelUp()
+
+
+        public void LevelUp()
+        {
+            IncreaseNextLevelXpLimit();
+            do IncreaseStats();
+            while (_maxStatsIncresmentPool > 0);
+            Level++;
+            ResetMaxStatsIncresemntPool();
+
+        }
+
+        private void ResetMaxStatsIncresemntPool()
+        {
+            _maxStatsIncresmentPool = 200;
+        }
+
+        public void IncreaseNextLevelXpLimit()
+        {
+            NextLevelXpLimit += _random.Next(10, 40) * (Level * 2);
+        }
+
+        private void IncreaseStats()
         {
             var randomStat = GetRandomStat();
             var randomIncreasment = GetRandomStatIncreasment();
@@ -49,7 +68,7 @@ namespace EfSamuariDomain.Entities
             {
                 case 1:
                     {
-                        MaxHp += randomIncreasment * (MaxVitality / 25);
+                        MaxHp += randomIncreasment * (MaxVitality / 10);
                         break;
                     }
                 case 2:
@@ -69,29 +88,26 @@ namespace EfSamuariDomain.Entities
                     }
                 case 5:
                     {
-                        MaxVitality += randomIncreasment;
+                        MaxStrengt += randomIncreasment;
                         break;
                     }
                 default:
                     throw new ArgumentException("Something weird happend");
-
             }
         }
 
         private int GetRandomStatIncreasment()
         {
-            return _random.Next(5, _maxStatsIncresmentPool);
+            _maxStatsIncresmentPool = _maxStatsIncresmentPool < 0 ? 0 : _maxStatsIncresmentPool;
+            return _random.Next(1, _maxStatsIncresmentPool + 1);
         }
 
         private int GetRandomStat()
         {
-            return _random.Next(5);
+            return _random.Next(1, 6);
         }
 
-        private void IncreaseNextLevelXpLimit()
-        {
-            NextLevelXpLimit += _random.Next(10, 40);
-        }
+
 
 
         private void InitMaxStats()
