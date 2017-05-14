@@ -9,14 +9,14 @@ namespace EfSamuariDomain.Entities
     {
 
         private readonly Random _random = new Random(Guid.NewGuid().GetHashCode());
-        public int Id { get; set; }
-        public int Hp { get; set; }
-        public int Xp { get; set; }
+        public float Id { get; set; }
+        public float Hp { get; set; }
+        public float Xp { get; set; }
         public LevelHandler Level { get; set; } = new LevelHandler();
-        public int Dexterity { get; set; }
-        public int Intelligens { get; set; }
-        public int Vitality { get; set; }
-        public int Strenght { get; set; }
+        public float Dexterity { get; set; }
+        public float Intelligens { get; set; }
+        public float Vitality { get; set; }
+        public float Strenght { get; set; }
         public virtual ICollection<Samurai> Samurais { get; set; }
 
         public Stats()
@@ -27,14 +27,14 @@ namespace EfSamuariDomain.Entities
         }
         private void InitStats()
         {
-            Hp += _random.Next(40, Level.MaxHp + 1);
-            Dexterity += _random.Next(10, Level.MaxDexterity + 1);
-            Intelligens += _random.Next(10, Level.MaxIntelligens + 1);
-            Vitality += _random.Next(10, Level.MaxVitality + 1);
-            Strenght += _random.Next(10, Level.MaxStrengt + 1);
+            Hp += _random.Next(40, (int)Level.MaxHp + 1);
+            Dexterity += _random.Next(10, (int)Level.MaxDexterity + 1);
+            Intelligens += _random.Next(10, (int)Level.MaxIntelligens + 1);
+            Vitality += _random.Next(10, (int)Level.MaxVitality + 1);
+            Strenght += _random.Next(10, (int)Level.MaxStrengt + 1);
         }
 
-        public void GainXp(int xpGained)
+        public void GainXp(float xpGained)
         {
             Xp += xpGained;
             if (Level.CheckIfLevelUp(xpGained))
@@ -55,11 +55,11 @@ namespace EfSamuariDomain.Entities
 
         private void IncreaseStats()
         {
-            Hp += _random.Next(Level.MaxHp - Hp + 1);
-            Dexterity += _random.Next(Level.MaxDexterity - Dexterity + 1);
-            Intelligens += _random.Next(Level.MaxIntelligens - Intelligens + 1);
-            Vitality += _random.Next(Level.MaxVitality - Vitality + 1);
-            Strenght += _random.Next(Level.MaxStrengt - Strenght + 1);
+            Hp += _random.Next((int)Level.MaxHp - (int)Hp + 1);
+            Dexterity += _random.Next((int)Level.MaxDexterity - (int)Dexterity + 1);
+            Intelligens += _random.Next((int)Level.MaxIntelligens - (int)Intelligens + 1);
+            Vitality += _random.Next((int)Level.MaxVitality - (int)Vitality + 1);
+            Strenght += _random.Next((int)Level.MaxStrengt - (int)Strenght + 1);
 
         }
     }

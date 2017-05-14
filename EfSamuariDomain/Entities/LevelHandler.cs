@@ -10,16 +10,16 @@ namespace EfSamuariDomain.Entities
     {
 
         private readonly Random _random = new Random(Guid.NewGuid().GetHashCode());
-        private int _maxStatsIncresmentPool = 200;
+        private float _maxStatsIncresmentPool = 200;
 
         public int Id { get; set; }
-        public int Level { get; set; }
-        public int NextLevelXpLimit { get; set; }
-        public int MaxHp { get; set; }
-        public int MaxIntelligens { get; set; }
-        public int MaxDexterity { get; set; }
-        public int MaxVitality { get; set; }
-        public int MaxStrengt { get; set; }
+        public float Level { get; set; }
+        public float NextLevelXpLimit { get; set; }
+        public float MaxHp { get; set; }
+        public float MaxIntelligens { get; set; }
+        public float MaxDexterity { get; set; }
+        public float MaxVitality { get; set; }
+        public float MaxStrengt { get; set; }
 
 
 
@@ -31,7 +31,7 @@ namespace EfSamuariDomain.Entities
             InitMaxStats();
         }
 
-        public bool CheckIfLevelUp(int xpGaind)
+        public bool CheckIfLevelUp(float xpGaind)
         {
             return xpGaind > NextLevelXpLimit;
 
@@ -99,7 +99,7 @@ namespace EfSamuariDomain.Entities
         private int GetRandomStatIncreasment()
         {
             _maxStatsIncresmentPool = _maxStatsIncresmentPool < 0 ? 0 : _maxStatsIncresmentPool;
-            return _random.Next(1, _maxStatsIncresmentPool + 1);
+            return _random.Next(1, (int)_maxStatsIncresmentPool + 1);
         }
 
         private int GetRandomStat()

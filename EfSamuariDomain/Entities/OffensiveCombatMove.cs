@@ -9,10 +9,10 @@ namespace EfSamuariDomain.Entities
         private readonly Random _random = new Random(Guid.NewGuid().GetHashCode());
 
 
-        public int KickBaseDamage { get; set; } = 10;
-        public int KickPrecision { get; set; } = 4;
-        public int PunchBaseDamage { get; set; } = 5;
-        public int PunchPrescision { get; set; } = 2;
+        public float KickBaseDamage { get; set; } = 10;
+        public float KickPrecision { get; set; } = 4;
+        public float PunchBaseDamage { get; set; } = 5;
+        public float PunchPrescision { get; set; } = 2;
 
         public OffensiveCombatMove(Samurai samurai)
         {

@@ -9,10 +9,10 @@ namespace EfSamuariDomain.Entities
         private readonly Random _random = new Random(Guid.NewGuid().GetHashCode());
 
 
-        public int DodgeBaseReduction { get; set; } = 10;
-        public int DodgePrecision { get; set; } = 4;
-        public int BlockBaseReduction { get; set; } = 5;
-        public int BlockPrecision { get; set; } = 2;
+        public float DodgeBaseReduction { get; set; } = 10;
+        public float DodgePrecision { get; set; } = 4;
+        public float BlockBaseReduction { get; set; } = 5;
+        public float BlockPrecision { get; set; } = 2;
 
         public DefensiveCombatMove(Samurai samurai)
         {

@@ -3,6 +3,6 @@
 
     public interface IOffensiveMove
     {
-        int Damage { get; set; }
+        float Damage { get; set; }
     }
 }
