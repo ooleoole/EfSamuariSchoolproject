@@ -29,6 +29,7 @@ namespace EfSamuariData.Repositories
 
         public IEnumerable<TEntity> GetAll()
         {
+            
             return _set.ToList();
         }
 

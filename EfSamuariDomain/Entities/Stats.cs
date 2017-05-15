@@ -9,20 +9,20 @@ namespace EfSamuariDomain.Entities
     {
 
         private readonly Random _random = new Random(Guid.NewGuid().GetHashCode());
-        public float Id { get; set; }
-        public float Hp { get; set; }
-        public float Xp { get; set; }
+        public double Id { get; set; }
+        public double Hp { get; set; }
+        public double Xp { get; set; }
         public LevelHandler Level { get; set; } = new LevelHandler();
-        public float Dexterity { get; set; }
-        public float Intelligens { get; set; }
-        public float Vitality { get; set; }
-        public float Strenght { get; set; }
+        public double Dexterity { get; set; }
+        public double Intelligens { get; set; }
+        public double Vitality { get; set; }
+        public double Strenght { get; set; }
         public virtual ICollection<Samurai> Samurais { get; set; }
 
         public Stats()
         {
 
-
+            Xp = 1;
             InitStats();
         }
         private void InitStats()
@@ -34,7 +34,7 @@ namespace EfSamuariDomain.Entities
             Strenght += _random.Next(10, (int)Level.MaxStrengt + 1);
         }
 
-        public void GainXp(float xpGained)
+        public void GainXp(double xpGained)
         {
             Xp += xpGained;
             if (Level.CheckIfLevelUp(xpGained))

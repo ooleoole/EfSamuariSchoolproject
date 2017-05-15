@@ -13,13 +13,13 @@ namespace EfSamuariDomain.Entities
         private float _maxStatsIncresmentPool = 200;
 
         public int Id { get; set; }
-        public float Level { get; set; }
-        public float NextLevelXpLimit { get; set; }
-        public float MaxHp { get; set; }
-        public float MaxIntelligens { get; set; }
-        public float MaxDexterity { get; set; }
-        public float MaxVitality { get; set; }
-        public float MaxStrengt { get; set; }
+        public double Level { get; set; }
+        public double NextLevelXpLimit { get; set; }
+        public double MaxHp { get; set; }
+        public double MaxIntelligens { get; set; }
+        public double MaxDexterity { get; set; }
+        public double MaxVitality { get; set; }
+        public double MaxStrengt { get; set; }
 
 
 
@@ -31,7 +31,7 @@ namespace EfSamuariDomain.Entities
             InitMaxStats();
         }
 
-        public bool CheckIfLevelUp(float xpGaind)
+        public bool CheckIfLevelUp(double xpGaind)
         {
             return xpGaind > NextLevelXpLimit;
 
@@ -68,7 +68,7 @@ namespace EfSamuariDomain.Entities
             {
                 case 1:
                     {
-                        MaxHp += randomIncreasment * (MaxVitality / 10);
+                        MaxHp += randomIncreasment * (MaxVitality / 2);
                         break;
                     }
                 case 2:

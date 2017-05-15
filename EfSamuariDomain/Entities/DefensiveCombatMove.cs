@@ -9,10 +9,10 @@ namespace EfSamuariDomain.Entities
         private readonly Random _random = new Random(Guid.NewGuid().GetHashCode());
 
 
-        public float DodgeBaseReduction { get; set; } = 10;
-        public float DodgePrecision { get; set; } = 4;
-        public float BlockBaseReduction { get; set; } = 5;
-        public float BlockPrecision { get; set; } = 2;
+        public double DodgeBaseReduction { get; set; } = 10;
+        public double DodgePrecision { get; set; } = 4;
+        public double BlockBaseReduction { get; set; } = 5;
+        public double BlockPrecision { get; set; } = 2;
 
         public DefensiveCombatMove(Samurai samurai)
         {
@@ -21,10 +21,10 @@ namespace EfSamuariDomain.Entities
         public Dodge Dodge()
         {
             var randomNum = _random.Next(1, 30);
-            var damageReduction = DodgeBaseReduction * (_samurai.Stats.Dexterity / 2) *
-                                  (_samurai.Stats.Strenght / 5) *
-                                  (DodgePrecision * _samurai.Stats.Intelligens) /
-                                  (randomNum * 1000);
+            var damageReduction = (DodgeBaseReduction * (_samurai.Stats.Dexterity / 2) *
+                                  (_samurai.Stats.Strenght / 10) *
+                                  (DodgePrecision * _samurai.Stats.Intelligens / 100) /
+                                  (randomNum * (_samurai.Stats.Xp / 6666.6665 + (6666 / 6666.6665))));
             return new Dodge { DamageReduction = damageReduction };
         }
 
@@ -32,9 +32,9 @@ namespace EfSamuariDomain.Entities
         {
             var randomNum = _random.Next(1, 20);
             var damageReduction = DodgeBaseReduction * (_samurai.Stats.Dexterity / 2) *
-                                  (_samurai.Stats.Strenght / 4) *
-                                  (BlockPrecision * _samurai.Stats.Intelligens) /
-                                  (randomNum * 1000);
+                                  (_samurai.Stats.Strenght / 10) *
+                                  (BlockPrecision * _samurai.Stats.Intelligens / 100) /
+                                  (randomNum * (_samurai.Stats.Xp / 6666.6665 + (6666 / 6666.6665)));
             return new Block { DamageReduction = damageReduction };
         }
     }

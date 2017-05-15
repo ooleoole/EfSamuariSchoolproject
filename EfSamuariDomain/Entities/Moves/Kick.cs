@@ -7,7 +7,7 @@ namespace EfSamuariDomain.Entities.Moves
 {
     public class Kick : IOffensiveMove
     {
-        public float Damage { get; set; }
+        public double Damage { get; set; }
 
 
     }

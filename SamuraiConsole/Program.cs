@@ -12,6 +12,7 @@ namespace SamuraiConsole
             
             for (int l = 0; l < 10; l++)
             {
+                
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine();
                 Console.WriteLine("Samurai"+ l);
@@ -25,7 +26,7 @@ namespace SamuraiConsole
                 Console.WriteLine("--------------------------------------------------------");
                 Console.ResetColor();
                 var samurai = new Samurai();
-                samurai.Stats.GainXp(600000);
+               samurai.Stats.GainXp(600000);
                 Console.WriteLine("samuria stats");
                 Console.WriteLine($"HP: {samurai.Stats.Hp}  " +
                                   $"Dex: {samurai.Stats.Dexterity}  " +

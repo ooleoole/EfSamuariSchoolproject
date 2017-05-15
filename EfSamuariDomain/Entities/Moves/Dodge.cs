@@ -5,7 +5,7 @@ namespace EfSamuariDomain.Entities.Moves
     public class Dodge : IDefensiveMove
     {
 
-        public float DamageReduction { get; set; }
+        public double DamageReduction { get; set; }
 
     }
 }

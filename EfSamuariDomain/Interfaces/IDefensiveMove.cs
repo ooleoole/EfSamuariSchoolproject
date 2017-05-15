@@ -7,6 +7,6 @@ namespace EfSamuariDomain.Interfaces
     public interface IDefensiveMove
     {
 
-        float DamageReduction { get; set; }
+        double DamageReduction { get; set; }
     }
 }

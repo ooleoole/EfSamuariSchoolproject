@@ -4,7 +4,7 @@ namespace EfSamuariDomain.Entities.Moves
 {
     public class Block : IDefensiveMove
     {
-        public float DamageReduction { get; set; }
+        public double DamageReduction { get; set; }
 
     }
 }
